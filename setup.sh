@@ -32,3 +32,17 @@ fi
 
 # ---- 5 · Atuin (shell history sync) ----------------------------------------
 curl -fsSL https://setup.atuin.sh | bash -s -- --yes
+
+# ---- 6 · Drop in my Neovim config ------------------------------------------
+NVIM_DIR="$HOME/.config/nvim"
+BACKUP_STAMP=$(date +%s)
+
+if [ -e "$NVIM_DIR" ] && [ ! -L "$NVIM_DIR" ]; then
+  echo "▶︎ Found an existing nvim config – backing it up to ${NVIM_DIR}.bak.${BACKUP_STAMP}"
+  mv "$NVIM_DIR" "${NVIM_DIR}.bak.${BACKUP_STAMP}"
+fi
+
+git clone --depth 1 https://github.com/djmango/dotfiles-nvim.git "$NVIM_DIR"
+grep -qxF 'export VISUAL="nvim"' ~/.bashrc || {
+  printf '\n# default to Neovim\nexport VISUAL="nvim"\nexport EDITOR="nvim"\n' >> ~/.bashrc
+}
