@@ -16,7 +16,7 @@ curl -fsSL https://sh.rustup.rs | sh -s -- -y
 source "$HOME/.cargo/env"        # shell in the new cargo
 
 # ---- 4 · Rust apps ----------------------------------------------------------
-cargo install --locked bob-nvim cargo-binstall
+cargo install --locked bob-nvim
 
 BASH_RC="$HOME/.bashrc"        # or "$HOME/.zshrc" for z shell
 
