@@ -6,7 +6,7 @@ export DEBIAN_FRONTEND=noninteractive
 apt-get update -qq
 
 # ---- 1 · apt bits -----------------------------------------------------------
-apt-get install -y git curl magic-wormhole
+apt-get install -y git curl magic-wormhole fd-find
 
 # ---- 2 · ZeroTier (quiet) ---------------------------------------------------
 curl -fsSL https://install.zerotier.com | bash
